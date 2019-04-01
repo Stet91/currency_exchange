@@ -27,7 +27,7 @@ public class AccountingServiceTest {
         String secondDate = "2019-03-31";
         String amount = "100.0";
 
-        String expectResult = "Ваша прибыль составила бы 3411.00 руб.";
+        String expectResult = "Ваша прибыль составила бы 3412.00 руб.";
 
         String actualResult = accountingService.calculateProfitBetweenTwoDates(firstDate, secondDate, amount);
 

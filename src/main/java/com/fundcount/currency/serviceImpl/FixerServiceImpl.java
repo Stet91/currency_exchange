@@ -1,6 +1,7 @@
 package com.fundcount.currency.serviceImpl;
 
 import com.fundcount.currency.service.FixerService;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.io.BufferedReader;
@@ -12,9 +13,15 @@ import java.net.URL;
 @Service
 public class FixerServiceImpl implements FixerService {
 
+    @Value("${fixer.token}")
+    private String token;
+
+    @Value("${currency.source.url}")
+    private String sourceUrl;
+
     public String getCurrencyAtDate(String date) throws IOException {
 
-        String url = "http://data.fixer.io/api/" + date + "?access_key=6dc7fd5f4f914ba56c1d4cb00a94e4bc";
+        String url = sourceUrl + date + "?access_key=" + token;
 
         URL obj = new URL(url);
         HttpURLConnection connection = (HttpURLConnection) obj.openConnection();
